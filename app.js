@@ -30,6 +30,14 @@ var budgetController = (function () {
             inc: 0
         }
     };
+    //make other controllers to add items
+    return {
+        addItem: function (type, descripton , val) {
+           var newItem = new Expense(ID, des ,val);
+
+        }
+
+    };
 }
 )();
 
