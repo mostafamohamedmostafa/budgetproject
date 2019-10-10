@@ -35,7 +35,12 @@ var budgetController = (function () {
         addItem: function (type, descripton, val) {
             var newItem, ID;
             //ID = Last ID + 1
-            ID = data.allItems[type][data.allItems[type].lenght - 1].id + 1;
+            if (data.allItems[type].length > 0) {
+                ID = data.allItems[type][data.allItems[type].length - 1].id + 1;
+            } else {
+                ID = 0;
+            }
+
             if (type === 'exp') {
                 newItem = new Expense(ID, des, val);
             } else if (type === 'inc') {
@@ -100,12 +105,12 @@ var Controller = (function (budgetCtrl, UICtrl) {
 
         //1- input data get filed
         // calling the function which stores the values on input 
-         input = UICtrl.getInput();
+        input = UICtrl.getInput();
         console.log(input);
 
         // 2. add item to budget controller
         //because budget ctrl is an object so we have to save it in var
-         newitem = budgetCtrl.addItem(input.type, input.descripton, input.value);
+        newitem = budgetCtrl.addItem(input.type, input.descripton, input.value);
 
 
         //3 add items to ui
