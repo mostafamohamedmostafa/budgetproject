@@ -40,8 +40,9 @@ var budgetController = (function () {
                 newItem = new Expense(ID, des, val);
             } else if (type === 'inc') {
                 newItem = new Income(ID, des, val);
-
             }
+            // add data to array
+            data.allItems[type].push(newItem);
 
         }
 
