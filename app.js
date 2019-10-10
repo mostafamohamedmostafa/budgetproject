@@ -3,20 +3,32 @@
 var budgetController = (function () {
     // Some COde
     //Expenses Items (type , value , unique IDs)
-  
-    var Expenses = function(id, descripton, value){
+
+    var Expenses = function (id, descripton, value) {
         this.id = id;
         this.descripton = descripton;
         this.value = value;
     };
 
 
-       //Income Items (type , value , unique IDs)
-  
-       var Income = function(id, descripton, value){
+    //Income Items (type , value , unique IDs)
+
+    var Income = function (id, descripton, value) {
         this.id = id;
         this.descripton = descripton;
         this.value = value;
+    };
+
+    // Data Structure for Income and Expenses ( store in arry)
+    var data = {
+        allItems: {
+            exp: [],
+            inc: []
+        },
+        totals: {
+            exp: 0,
+            inc: 0
+        }
     };
 }
 )();
