@@ -15,13 +15,20 @@ var UIController = (function () {
     // Some Code
     //function can be used in other controller
 
+    var DOMstrings = {
+        inputType: '.add__type',
+        inputDescription: '.add__description',
+        inputValue: '.add__value'
+    };
+
+
     return {
         getInput: function () {
             return {
                 //selection between income or expense with value and data type
-                type: document.querySelector('.add__type').value,
-                descripton: document.querySelector('.add__description').value,
-                value: document.querySelector('.add__value').value
+                type: document.querySelector(DOMstrings.inputType).value,
+                descripton: document.querySelector(DOMstrings.inputType).value,
+                value: document.querySelector(DOMstrings.inputValue).value
             };
 
 
@@ -42,7 +49,7 @@ var Controller = (function (budgetCtrl, UICtrl) {
 
 
     var ctrlAddItem = function () {
-        
+
         //1- input data get filed
         // calling the function which stores the values on input 
         var input = UICtrl.getInput();
