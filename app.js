@@ -18,7 +18,7 @@ var UIController = (function () {
     return {
         getInput: function () {
             return {
-                //selection between income or expense
+                //selection between income or expense with value and data type
                 type: document.querySelector('.add__type').value,
                 descripton: document.querySelector('.add__description').value,
                 value: document.querySelector('.add__value').value
@@ -42,7 +42,12 @@ var Controller = (function (budgetCtrl, UICtrl) {
 
 
     var ctrlAddItem = function () {
+        
         //1- input data get filed
+        // calling the function which stores the values on input 
+        var input = UICtrl.getInput();
+        console.log(input);
+
         // 2. add item to budget controller
         //3 add items to ui
         // 4 calcuate the budget
