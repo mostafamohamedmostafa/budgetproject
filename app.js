@@ -34,8 +34,8 @@ var budgetController = (function () {
     return {
         addItem: function (type, descripton, val) {
             var newItem, ID;
-            ID = 0;
-
+            //ID = Last ID + 1
+            ID = data.allItems[type][data.allItems[type].lenght - 1].id +1;
             if (type === 'exp') {
                 newItem = new Expense(ID, des, val);
             } else if (type === 'inc') {
@@ -43,6 +43,7 @@ var budgetController = (function () {
             }
             // add data to array
             data.allItems[type].push(newItem);
+            return newItem;
 
         }
 
