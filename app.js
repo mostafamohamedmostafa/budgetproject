@@ -46,7 +46,7 @@ var budgetController = (function () {
             } else if (type === 'inc') {
                 newItem = new Income(ID, des, val);
             }
-            
+
             // add data to array
             data.allItems[type].push(newItem);
             return newItem;
@@ -118,6 +118,19 @@ var UIController = (function () {
             document.querySelector(element).insertAdjacentHTML('beforeend', newHtml);
 
         },
+        //adding method to clear fields
+        clearFields: function () {
+            var fields, fieldsArr;
+            fields = document.querySelectorAll(DOMstrings.inputDescription + ', ' + DOMstrings.inputValue);
+            fieldsArr =  Array.prototype.slice.call(fields);
+
+            fieldsArr.forEach(function(current, index , array){
+                current.value = "";
+
+
+            });
+        },
+
 
     }
 
@@ -130,7 +143,6 @@ var Controller = (function (budgetCtrl, UICtrl) {
 
 
     var ctrlAddItem = function () {
-
         var input, newItem;
 
         //1- input data get filed
@@ -143,10 +155,14 @@ var Controller = (function (budgetCtrl, UICtrl) {
         newItem = budgetCtrl.addItem(input.type, input.descripton, input.value);
 
         //3 add items to ui
-        UICtrl.addListItem(newItem ,input.type);
+        //error to be fixed adding only income
+        UICtrl.addListItem(newItem, input.type);
 
-        // 4 calcuate the budget
-        // 5 display the budget on ui
+        //4 clear the fields
+        UICtrl.clearFields();
+
+        // 5 calcuate the budget
+        // 6 display the budget on ui
     };
     // Some Code
     // Connection betwwen 2 other modules
