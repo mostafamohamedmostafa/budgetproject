@@ -126,9 +126,9 @@ var UIController = (function () {
 
             fieldsArr.forEach(function(current, index , array){
                 current.value = "";
-
-
             });
+            // returing focus to input description after adding value
+            fieldsArr[0].focus();
         },
 
 
