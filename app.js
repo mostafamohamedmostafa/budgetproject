@@ -32,7 +32,7 @@ var budgetController = (function () {
     };
     //make other controllers to add items
     return {
-        addItem: function (type, descripton, val) {
+        addItem: function (type, des, val) {
             var newItem, ID;
             //ID = Last ID + 1
             if (data.allItems[type].length > 0) {
@@ -46,6 +46,7 @@ var budgetController = (function () {
             } else if (type === 'inc') {
                 newItem = new Income(ID, des, val);
             }
+            
             // add data to array
             data.allItems[type].push(newItem);
             return newItem;
@@ -93,7 +94,7 @@ var UIController = (function () {
             };
         },
         addListItem: function (obj, type) {
-        
+
             //create HTML Strings with place HOlderText
             var html, newHtml, element;
             // Create HTML string with placeholder text
@@ -108,11 +109,13 @@ var UIController = (function () {
                 html = '<div class="item clearfix" id="exp-%id%"><div class="item__description">%description%</div><div class="right clearfix"><div class="item__value">%value%</div><div class="item__percentage">21%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>';
             }
 
-
-
             // replace the place holder text with acutal data
+            newHtml = html.replace('%id%', obj.id);
+            newHtml = newHtml.replace('%description%', obj.descripton);
+            newHtml = newHtml.replace('%value%', obj.value);
 
             // insert the HTML into the DOm
+            document.querySelector(element).insertAdjacentHTML('beforeend', newHtml);
 
         },
 
@@ -139,8 +142,9 @@ var Controller = (function (budgetCtrl, UICtrl) {
         //because budget ctrl is an object so we have to save it in var
         newItem = budgetCtrl.addItem(input.type, input.descripton, input.value);
 
-
         //3 add items to ui
+        UICtrl.addListItem(newItem ,input.type);
+
         // 4 calcuate the budget
         // 5 display the budget on ui
     };
