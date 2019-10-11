@@ -69,7 +69,17 @@ var UIController = (function () {
     var DOMstrings = {
         inputType: '.add__type',
         inputDescription: '.add__description',
-        inputValue: '.add__value'
+        inputValue: '.add__value',
+        inputBtn: '.add__btn',
+        incomeContainer: '.income__list',
+        expensesContainer: '.expenses__list',
+        budgetLabel: '.budget__value',
+        incomeLabel: '.budget__income--value',
+        expensesLabel: '.budget__expenses--value',
+        percentageLabel: '.budget__expenses--percentage',
+        container: '.container',
+        expensesPercLabel: '.item__percentage',
+        dateLabel: '.budget__title--month'
     };
 
 
@@ -81,15 +91,32 @@ var UIController = (function () {
                 descripton: document.querySelector(DOMstrings.inputType).value,
                 value: document.querySelector(DOMstrings.inputValue).value
             };
+        },
+        addListItem: function (obj, type) {
+        
+            //create HTML Strings with place HOlderText
+            var html, newHtml, element;
+            // Create HTML string with placeholder text
+
+            if (type === 'inc') {
+                element = DOMstrings.incomeContainer;
+
+                html = '<div class="item clearfix" id="inc-%id%"> <div class="item__description">%description%</div><div class="right clearfix"><div class="item__value">%value%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>';
+            } else if (type === 'exp') {
+                element = DOMstrings.expensesContainer;
+
+                html = '<div class="item clearfix" id="exp-%id%"><div class="item__description">%description%</div><div class="right clearfix"><div class="item__value">%value%</div><div class="item__percentage">21%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>';
+            }
 
 
 
-        }
-    };
+            // replace the place holder text with acutal data
 
+            // insert the HTML into the DOm
 
+        },
 
-
+    }
 
 })();
 
@@ -101,7 +128,7 @@ var Controller = (function (budgetCtrl, UICtrl) {
 
     var ctrlAddItem = function () {
 
-        var input, newitem;
+        var input, newItem;
 
         //1- input data get filed
         // calling the function which stores the values on input 
@@ -110,7 +137,7 @@ var Controller = (function (budgetCtrl, UICtrl) {
 
         // 2. add item to budget controller
         //because budget ctrl is an object so we have to save it in var
-        newitem = budgetCtrl.addItem(input.type, input.descripton, input.value);
+        newItem = budgetCtrl.addItem(input.type, input.descripton, input.value);
 
 
         //3 add items to ui
