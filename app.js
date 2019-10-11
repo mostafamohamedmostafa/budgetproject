@@ -90,7 +90,8 @@ var UIController = (function () {
                 //selection between income or expense with value and data type
                 type: document.querySelector(DOMstrings.inputType).value,
                 descripton: document.querySelector(DOMstrings.inputType).value,
-                value: document.querySelector(DOMstrings.inputValue).value
+                // convert value from string to number
+                value: parseFloat(document.querySelector(DOMstrings.inputValue).value)
             };
         },
         addListItem: function (obj, type) {
@@ -122,9 +123,9 @@ var UIController = (function () {
         clearFields: function () {
             var fields, fieldsArr;
             fields = document.querySelectorAll(DOMstrings.inputDescription + ', ' + DOMstrings.inputValue);
-            fieldsArr =  Array.prototype.slice.call(fields);
+            fieldsArr = Array.prototype.slice.call(fields);
 
-            fieldsArr.forEach(function(current, index , array){
+            fieldsArr.forEach(function (current, index, array) {
                 current.value = "";
             });
             // returing focus to input description after adding value
@@ -138,6 +139,13 @@ var UIController = (function () {
 
 
 // APP Controller 
+var updateBudget = function () {
+
+    // 5 calcuate the budget
+    // 6 display the budget on ui
+    //7 retun the budget    
+};
+
 
 var Controller = (function (budgetCtrl, UICtrl) {
 
@@ -162,6 +170,7 @@ var Controller = (function (budgetCtrl, UICtrl) {
         UICtrl.clearFields();
 
         // 5 calcuate the budget
+        updateBudget();
         // 6 display the budget on ui
     };
     // Some Code
