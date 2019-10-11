@@ -158,20 +158,26 @@ var Controller = (function (budgetCtrl, UICtrl) {
         input = UICtrl.getInput();
         console.log(input);
 
-        // 2. add item to budget controller
-        //because budget ctrl is an object so we have to save it in var
-        newItem = budgetCtrl.addItem(input.type, input.descripton, input.value);
+        // preventing from adding empty lines and input filed should be a number
 
-        //3 add items to ui
-        //error to be fixed adding only income
-        UICtrl.addListItem(newItem, input.type);
 
-        //4 clear the fields
-        UICtrl.clearFields();
+        if (input.descripton !== "" && !isNaN(input.value) && input.value > 0) {
 
-        // 5 calcuate the budget
-        updateBudget();
-        // 6 display the budget on ui
+            // 2. add item to budget controller
+            //because budget ctrl is an object so we have to save it in var
+            newItem = budgetCtrl.addItem(input.type, input.descripton, input.value);
+
+            //3 add items to ui
+            //error to be fixed adding only income
+            UICtrl.addListItem(newItem, input.type);
+
+            //4 clear the fields
+            UICtrl.clearFields();
+
+            // 5 calcuate the budget
+            updateBudget();
+            // 6 display the budget on ui
+        }
     };
     // Some Code
     // Connection betwwen 2 other modules
