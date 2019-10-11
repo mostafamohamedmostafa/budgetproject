@@ -19,6 +19,15 @@ var budgetController = (function () {
         this.value = value;
     };
 
+    //create caluclate budget total ( total of income and expense)
+    var calcuateTotal = function (type) {
+        var sum = 0;
+        data.allItems[type].forEach(function (cur) {
+            sum = sum + cur.value;
+        });
+    };
+
+
     // Data Structure for Income and Expenses ( store in arry)
     var data = {
         allItems: {
@@ -51,7 +60,23 @@ var budgetController = (function () {
             data.allItems[type].push(newItem);
             return newItem;
 
+        },
+
+        calcuateBudget: function () {
+            //calucate total Income and Expenses
+
+
+
+            // Calculate the budget income - expenses
+
+
+            // calculate of percentage of income we spent
+
+
         }
+
+
+
 
     };
 }
